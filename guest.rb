@@ -6,4 +6,8 @@ class Guest
     @money = money
     @favourite_song = favourite_song
   end
+
+  def cheer()
+    return "I love that song!"
+  end
 end
