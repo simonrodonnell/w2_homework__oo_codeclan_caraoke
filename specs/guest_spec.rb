@@ -26,4 +26,8 @@ class TestGuest < Minitest::Test
     assert_equal("I love that song!", @guest.cheer())
   end
 
+  def test_pay_fee
+    assert_equal(450, @guest.pay_fee(50))
+  end
+
 end
