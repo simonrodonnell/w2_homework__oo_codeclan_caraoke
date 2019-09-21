@@ -39,21 +39,19 @@ class Room
   end
 
   def collect_fee(amount = @fee)
-    remove_guests = []
-    for guest in @guests
+    not_enough_money_guests = []
+    @guests.each do |guest|
       if guest.money >= amount
         guest.pay_fee(amount)
         @money += amount
       else
-        remove_guests.push(guest)
+        not_enough_money_guests.push(guest)
       end
     end
-    for guest in @guests
-      if remove_guests.include?(guest)
-        @guests.delete(guest)
-      end
+    @guests.each do |guest|
+      @guests.delete(guest) if not_enough_money_guests.include?(guest)
     end
-    # @guests.each { |guest| guest.pay_fee(@fee) }
+
   end
 
 end

@@ -98,7 +98,6 @@ class TestRoom < Minitest::Test
     @room.check_guest_in(@guest2)
     @room.check_guest_in(@guest3)
     @room.collect_fee(34)
-    guests_money = @guests.map { |guest| guest.money() }
     assert_equal(2, @room.guests().length())
     assert_equal(68, @room.money)
   end
