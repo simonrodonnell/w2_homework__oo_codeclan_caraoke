@@ -40,6 +40,13 @@ class TestRoom < Minitest::Test
     assert_equal(4, @room.songs().length())
   end
 
+  def test_room_has_playlist
+    assert_equal(["Like a Rolling Stone",
+    "I Will Survive",
+    "Smells Like Teen Spirit",
+    "Rapper's Delight"], @room.playlist)
+  end
+
   def test_room_has_capacity
     assert_equal(4, @room.capacity)
   end
@@ -90,18 +97,9 @@ class TestRoom < Minitest::Test
     @room.check_guest_in(@guest1)
     @room.check_guest_in(@guest2)
     @room.check_guest_in(@guest3)
-    @room.collect_fee
-    @room.collect_fee
-    @room.collect_fee
-    @room.collect_fee
-    @room.collect_fee
-    @room.collect_fee
-    @room.collect_fee
-    @room.collect_fee
-    @room.collect_fee
-    @room.collect_fee
+    @room.collect_fee(34)
     guests_money = @guests.map { |guest| guest.money() }
-    binding.pry
     assert_equal(2, @room.guests().length())
+    assert_equal(68, @room.money)
   end
 end

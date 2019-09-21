@@ -7,8 +7,12 @@ class Guest
     @favourite_song = favourite_song
   end
 
-  def cheer()
-    return "I love that song!"
+  def cheer(room)
+    if room.playlist.include?(@favourite_song)
+      return "I love that song!"
+    else
+      return "Meh. This place sucks."
+    end
   end
 
   def pay_fee(amount)
