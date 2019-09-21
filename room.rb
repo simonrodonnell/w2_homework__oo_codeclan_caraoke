@@ -41,7 +41,7 @@ class Room
   def collect_fee(amount = @fee)
     not_enough_money_guests = []
     @guests.each do |guest|
-      if guest.money >= amount
+      if (guest.money >= amount) && (guest.has_paid == false)
         guest.pay_fee(amount)
         @money += amount
       else
@@ -50,7 +50,7 @@ class Room
     end
 
     @guests.delete_if { |guest| not_enough_money_guests.include?(guest)}
-    
+
 
   end
 

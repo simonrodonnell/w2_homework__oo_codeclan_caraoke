@@ -1,10 +1,11 @@
 class Guest
-  attr_reader(:name, :favourite_song)
+  attr_reader(:name, :favourite_song, :has_paid)
   attr_accessor(:money)
   def initialize(name, money, favourite_song)
     @name = name
     @money = money
     @favourite_song = favourite_song
+    @has_paid = false
   end
 
   def cheer(room)
@@ -17,5 +18,6 @@ class Guest
 
   def pay_fee(amount)
     @money -= amount
+    @has_paid = true
   end
 end

@@ -9,10 +9,10 @@ class TestGuest < Minitest::Test
 
   def setup
 
-    @song1 = Song.new("Like a Rolling Stone")
-    @song2 = Song.new("I Will Survive")
-    @song3 = Song.new("Smells Like Teen Spirit")
-    @song4 = Song.new("Rapper's Delight")
+    @song1 = Song.new("Like a Rolling Stone", "Bob Dylan")
+    @song2 = Song.new("I Will Survive", "Gloria Gaynor")
+    @song3 = Song.new("Smells Like Teen Spirit", "Nirvana")
+    @song4 = Song.new("Rapper's Delight", "Sugarhill Gang")
 
     @songs = [@song1, @song2, @song3, @song4]
 
@@ -38,7 +38,9 @@ class TestGuest < Minitest::Test
   end
 
   def test_pay_fee
-    assert_equal(450, @guest.pay_fee(50))
+    @guest.pay_fee(50)
+    assert_equal(450, @guest.money)
+    assert_equal(true, @guest.has_paid)
   end
 
 end
