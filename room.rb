@@ -48,9 +48,9 @@ class Room
         not_enough_money_guests.push(guest)
       end
     end
-    @guests.each do |guest|
-      @guests.delete(guest) if not_enough_money_guests.include?(guest)
-    end
+
+    @guests.delete_if { |guest| not_enough_money_guests.include?(guest)}
+    
 
   end
 
